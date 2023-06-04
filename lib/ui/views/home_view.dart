@@ -68,6 +68,7 @@ class _HomeViewState extends State<HomeView> {
                           .doc(model.user['uid'])
                           .collection("transactions")
                           .where("month", isEqualTo: model.appBarTitle)
+                          .orderBy("date", descending: false)
                           .snapshots(),
                       builder: (context, snapshot) {
                         if (snapshot.hasData) {

@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:intl/intl.dart';
 import 'package:moneymanager/core/models/transaction.dart';
 import 'package:moneymanager/core/services/transaction_sercvices.dart';
 import 'package:moneymanager/core/viewmodels/base_model.dart';
@@ -71,13 +70,12 @@ class InsertTransactionModel extends BaseModel {
       loading = false;
       memoController.clear();
       amountController.clear();
-      notifyListeners();
     });
     QuerySnapshot<Map<String, dynamic>> snapshot = await FirebaseFirestore.instance
         .collection('users')
         .doc(user['uid'])
         .collection("transactions")
-        .where("month", isEqualTo: DateFormat("MMMM").format(DateTime.now()))
+        .where("month", isEqualTo: selectedMonth)
         .get();
     List<TransactionProcess> res = snapshot.docs.map((doc) => TransactionProcess.fromJson(doc.data())).toList();
     dynamic income = 0;
@@ -89,6 +87,7 @@ class InsertTransactionModel extends BaseModel {
         income = income + value.amount;
       }
     }
+
     if (income - expenses < user["ceiling"] && type == "expense") {
       final snackBar = SnackBar(
         content: Text("Vous avez depassé votre plafond de ${user['ceiling']} dt "),
@@ -101,6 +100,7 @@ class InsertTransactionModel extends BaseModel {
       );
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
+    notifyListeners();
     Navigator.pop(context);
     Navigator.pop(context);
   }

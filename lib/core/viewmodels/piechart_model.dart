@@ -44,8 +44,6 @@ class PieChartModel extends BaseModel {
       prepareDataMap(element);
     });
 
-    print(dataMap.toString());
-
     setState(ViewState.Idle);
     notifyListeners();
   }
@@ -66,36 +64,29 @@ class PieChartModel extends BaseModel {
 
   Map<String, double> getDefaultDataMap(List<TransactionProcess> transactions) {
     Map<String, double> fullExpensesMap = {
-      'Food': 0,
-      'Bills': 0,
-      'Transportaion': 0,
-      'Home': 0,
-      'Entertainment': 0,
-      'Shopping': 0,
-      'Clothing': 0,
-      'Insurance': 0,
-      'Telephone': 0,
-      'Health': 0,
-      'Sport': 0,
-      'Beauty': 0,
-      'Education': 0,
-      'Gift': 0,
-      'Pet': 0,
-      'Salary': 0,
-      'Awards': 0,
-      'Grants': 0,
-      'Rental': 0,
-      'Investment': 0,
-      'Lottery': 0,
+      'food'.tr: 0,
+      'bills.tr': 0,
+      'transportation'.tr: 0,
+      'home'.tr: 0,
+      'entertainment'.tr: 0,
+      'shopping'.tr: 0,
+      'clothing'.tr: 0,
+      'insurance'.tr: 0,
+      'telephone'.tr: 0,
+      'health'.tr: 0,
+      'sport'.tr: 0,
+      'beauty'.tr: 0,
+      'education'.tr: 0,
+      'gift'.tr: 0,
+      'pet'.tr: 0,
     };
 
     Map<String, double> fullIncomeMap = {
-      'Salary': 0,
-      'Awards': 0,
-      'Grants': 0,
-      'Rental': 0,
-      'Investment': 0,
-      'Lottery': 0,
+      'salary'.tr: 0,
+      'awards'.tr: 0,
+      'grants'.tr: 0,
+      'rental'.tr: 0,
+      'investment'.tr: 0,
     };
 
     List<String> transactionsCategories = [];
@@ -120,7 +111,6 @@ class PieChartModel extends BaseModel {
     fullExpensesMap.removeWhere((key, value) {
       return !transactionsCategories.contains(key);
     });
-
     return fullExpensesMap;
   }
 
@@ -132,15 +122,16 @@ class PieChartModel extends BaseModel {
     } else {
       type = 'expense';
     }
-    print("type " + type);
     await init(false);
   }
 
   void prepareDataMap(element) {
     if (type == 'income') {
-      dataMap[_categoryIconService.incomeList.elementAt(element.categoryindex).name] = element.amount + .0;
+      dataMap[_categoryIconService.incomeList.elementAt(element.categoryindex).name] =
+          element.amount + .0 + dataMap[_categoryIconService.incomeList.elementAt(element.categoryindex).name];
     } else {
-      dataMap[_categoryIconService.expenseList.elementAt(element.categoryindex).name] = element.amount + .0;
+      dataMap[_categoryIconService.expenseList.elementAt(element.categoryindex).name] =
+          element.amount + .0 + dataMap[_categoryIconService.expenseList.elementAt(element.categoryindex).name];
     }
   }
 
@@ -196,9 +187,6 @@ class PieChartModel extends BaseModel {
     if (await file.exists()) {
       // Open the file for viewing/downloading
       OpenFile.open(file.path);
-      print(file.path);
-    } else {
-      print('File does not exist');
-    }
+    } else {}
   }
 }
