@@ -79,6 +79,7 @@ class PieChartModel extends BaseModel {
       'education'.tr: 0,
       'gift'.tr: 0,
       'pet'.tr: 0,
+      'saving'.tr: 0,
     };
 
     Map<String, double> fullIncomeMap = {
