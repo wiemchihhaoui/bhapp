@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "826810569385",
+    "project_id": "bhapp-f1523",
+    "storage_bucket": "bhapp-f1523.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:826810569385:android:6d187648d37759d54d8fb8",
+        "android_client_info": {
+          "package_name": "com.bh.bhapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "826810569385-p0hqq15lcqoe1h7vdu39l4jds2phpedm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIBb2NvrlHl0go1h55Exf8xfIj5czYi_E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "826810569385-p0hqq15lcqoe1h7vdu39l4jds2phpedm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
