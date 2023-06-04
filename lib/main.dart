@@ -8,7 +8,7 @@ import 'package:moneymanager/ui/shared/app_colors.dart';
 import 'locator.dart';
 import 'ui/shared/internacionalization/languages.dart';
 
-/*test github*/
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(); // initialize firebase app
